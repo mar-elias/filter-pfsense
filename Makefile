@@ -1,13 +1,12 @@
 update_list:
-	make -C "$(PATH_PFSENSE)/blacklist/"
-
 	rm -f ./pfsense_list
 	rm -f ./pfsense_list_additional
 	rm -f ./pfsense_list_additional2
 	rm -f ./ips
 	rm -f ./tlds_PUT_MANUALLY
 
-	mv $(PATH_PFSENSE)/blacklist/out_pfsense_* ./
+	make -C "$(PATH_PFSENSE)/blacklist/"
+	mv       $(PATH_PFSENSE)/blacklist/out_pfsense_* ./
 
 	for f in out_*; do \
 		[ -e "$$f" ] || continue; \
